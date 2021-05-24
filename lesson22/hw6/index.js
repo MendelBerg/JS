@@ -1,7 +1,10 @@
-function createButton(buttonText) {
-  const bodyElem = document.querySelector('body');
-  const buttonElem = document.createElement('button');
-  buttonElem.textContent = buttonText;
+const btnElemArr = [...document.querySelectorAll('.btn')];
 
-  bodyElem.append(buttonElem);
-}
+const handleClick = () => {
+  console.log(event.target.textContent);
+};
+
+btnElemArr.forEach(btn => {
+  btn.addEventListener('click', () => handleClick());
+});
+

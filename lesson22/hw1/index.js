@@ -1,13 +1,5 @@
-export function getTitleElement() {
-  const titleElem = document.querySelector('.title');
-  console.dir(titleElem);
+const btnElem = document.querySelector('.create-btn');
 
-  return titleElem;
-}
-
-export function getInputElement() {
-  const inputElem = document.querySelector('input[type="text"]');
-  console.dir(inputElem);
-
-  return inputElem;
-}
+btnElem.addEventListener('click', () => {
+  alert('done');
+});

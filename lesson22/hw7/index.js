@@ -1,7 +1,5 @@
-function clearList() {
-  const bodyElem = document.querySelector('.categories');
+const inputElem = document.querySelector('.text-input');
 
-  bodyElem.innerHTML = '';
-}
-
-// clearList();
+inputElem.addEventListener('change', () => {
+  console.log(event.target.value);
+});

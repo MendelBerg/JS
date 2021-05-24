@@ -1,5 +1,8 @@
-function setButton(buttonText) {
-  const bodyElem = document.querySelector('body');
+const btnElem = document.querySelector('.single-use-btn');
+const showMessage = () => {
+  console.log('clicked');
+  btnElem.removeEventListener('click', showMessage);
+};
 
-  bodyElem.innerHTML = `<button>${buttonText}</button>`;
-}
+
+btnElem.addEventListener('click', showMessage);
