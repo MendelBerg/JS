@@ -48,6 +48,7 @@ function toggleTask(checkbox) {
   for (const el of tasks) {
     if (el.text === checkbox.parentElement.textContent) {
       el.done = !el.done;
+      el.date = Date.now();
       break;
     }
   }
