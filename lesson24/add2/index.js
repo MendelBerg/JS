@@ -14,10 +14,9 @@ const tasks = [
 
 function renderTasks(tasksList) {
   const sorteredTaskList = [
-    tasksList.filter(task => task.done === false),
-    tasksList.filter(task => task.done === true).sort((a, b) => b.date - a.date),
+    ...tasksList.filter(task => task.done === false),
+    ...tasksList.filter(task => task.done === true).sort((a, b) => b.date - a.date),
   ]
-  .reduce((acc, next) => [...acc, ...next], []);
 
   const tasksElems = sorteredTaskList.map(({ text, done }) => {
     const listItemElem = document.createElement('li');
