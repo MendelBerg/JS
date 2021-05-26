@@ -5,14 +5,13 @@ const getDiff = (startDate, endDate) => {
   let minutes = 0;
   let seconds = 0;
 
-
   if (diff < 60000) {
     seconds = Math.floor(diff / 1000);
   } else if (diff < 60000 * 60) {
     minutes = Math.floor(diff / 60000);
     diff -= minutes * 60000;
-
     seconds = Math.floor(diff / 1000);
+    
   } else if (diff < 60000 * 60 * 24) {
     hours = Math.floor(diff / (60 * 60 * 1000));
     diff -= hours * 60 * 60 * 1000;

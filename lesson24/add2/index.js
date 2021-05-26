@@ -15,10 +15,9 @@ const tasks = [
 function renderTasks(tasksList) {
   const sorteredTaskList = [
     tasksList.filter(task => task.done === false),
-    tasksList.filter(task => task.done === true),
+    tasksList.filter(task => task.done === true).sort((a, b) => b.date - a.date),
   ]
-    .map(type => type.sort((a, b) => b.date - a.date))
-    .reduce((acc, next) => [...acc, ...next], []);
+  .reduce((acc, next) => [...acc, ...next], []);
 
   const tasksElems = sorteredTaskList.map(({ text, done }) => {
     const listItemElem = document.createElement('li');
@@ -62,7 +61,7 @@ function createTask() {
     return null;
   }
 
-  tasks.push({ text: inputElem.value, done: false, date: Date.now() });
+  tasks.unshift({ text: inputElem.value, done: false, date: Date.now() });
   inputElem.value = '';
   refreashList();
   return undefined;
