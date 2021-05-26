@@ -12,7 +12,7 @@ const tasks = [
   { text: 'Buy meat', done: true, date: Date.now() },
 ];
 
-const createCheckbox = (done) => {
+const createCheckbox = done => {
   const checkbox = document.createElement('input');
   checkbox.setAttribute('type', 'checkbox');
   checkbox.checked = done;
@@ -23,20 +23,23 @@ const createCheckbox = (done) => {
 };
 
 function renderTasks(tasksList) {
-  const tasksElems = tasksList
-    .sort((a, b) => a.done - b.done)
-    .map(({ text, done }) => {
-      const listItemElem = document.createElement('li');
-      listItemElem.classList.add('list__item');
+  const sorteredTaskList = [
+    ...tasksList.filter(task => task.done === false),
+    ...tasksList.filter(task => task.done === true).sort((a, b) => b.date - a.date),
+  ];
 
-      if (done) {
-        listItemElem.classList.add('list__item_done');
-      }
+  const tasksElems = sorteredTaskList.map(({ text, done }) => {
+    const listItemElem = document.createElement('li');
+    listItemElem.classList.add('list__item');
 
-      listItemElem.append(createCheckbox(done), text);
+    if (done) {
+      listItemElem.classList.add('list__item_done');
+    }
 
-      return listItemElem;
-    });
+    listItemElem.append(createCheckbox(done), text);
+
+    return listItemElem;
+  });
 
   listElem.append(...tasksElems);
 }
