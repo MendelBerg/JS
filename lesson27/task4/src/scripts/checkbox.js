@@ -1,27 +1,22 @@
 /* eslint-disable import/no-cycle */
 /* eslint-disable no-restricted-syntax */
-import { tasks, setTask } from './storage.js';
+import { getItem, setItem } from './storage.js';
 import { refreashList } from './tools.js';
 
 function toggleTask(checkbox) {
+  const tasks = getItem('tasksList');
   checkbox.parentElement.classList.toggle('list__item_done');
-  console.log('task bef: ', tasks, typeof tasks);
 
   for (const el of tasks) {
     if (el.text === checkbox.parentElement.textContent) {
-      console.log('el bef ', el);
-
       el.done = !el.done;
       el.date = Date.now();
-      console.log('el aft', el);
-
       break;
     }
   }
-  console.log('task aft: ', tasks, typeof tasks);
-  // setTask(tasks);
 
-  refreashList();
+  setItem('tasksList', tasks);
+  refreashList(getItem('tasksList'));
 }
 
 export const createCheckbox = done => {

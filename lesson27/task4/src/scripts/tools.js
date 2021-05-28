@@ -1,8 +1,7 @@
 /* eslint-disable import/no-cycle */
 import { renderTasks } from './todoList.js';
-import { tasks } from './storage.js';
 
-export function refreashList() {
+export function refreashList(tasks) {
   const listElem = document.querySelector('.list');
   listElem.innerHTML = '';
 

@@ -1,4 +1,4 @@
-import { tasks, getItem, setTask } from './storage.js';
+import { getItem, setItem } from './storage.js';
 import { refreashList } from './tools.js';
 
 export function createTask() {
@@ -6,12 +6,13 @@ export function createTask() {
   if (!inputElem.value) {
     return null;
   }
-  // const tasks = getItem('tasksList') || [];
+
+  const tasks = getItem('tasksList');
 
   tasks.unshift({ text: inputElem.value, done: false, date: Date.now() });
-  setTask('tasksList', tasks);
+  setItem('tasksList', tasks);
   inputElem.value = '';
-  refreashList();
+  refreashList(getItem('tasksList'));
   return undefined;
 }
 

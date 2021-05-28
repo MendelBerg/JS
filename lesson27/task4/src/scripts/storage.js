@@ -3,12 +3,7 @@ export const setItem = (key, value) => {
   localStorage.setItem(key, JSON.stringify(value));
 };
 
-export const getItem = key => JSON.parse(localStorage.getItem(key));
-
-export let tasks = getItem('tasksList') || [];
+const get = key => JSON.parse(localStorage.getItem(key));
 
 
-export function setTask(key, value) {
-  setItem(key, value);
-  tasks = getItem('tasksList');
-}
+export const getItem = key => get(key) || [];
