@@ -3,8 +3,8 @@ import { initTodoListHandlers } from './todoList.js';
 
 document.addEventListener('DOMContentLoaded', () => {
   renderTask();
-  initTodoListHandlers();
 });
+initTodoListHandlers();
 
 const onStorageChange = e => {
   if (e.key === 'taskList') {
