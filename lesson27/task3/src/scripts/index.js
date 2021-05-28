@@ -1,15 +1,8 @@
-import { renderTask } from './renderer.js';
-import { initTodoListHandlers } from './todoList.js';
+/* eslint-disable import/named */
+import { getItem } from './storage.js';
+import { createTask } from './createTask.js';
+import { renderTasks } from './todoList.js';
 
-document.addEventListener('DOMContentLoaded', () => {
-  renderTask();
-});
-initTodoListHandlers();
 
-const onStorageChange = e => {
-  if (e.key === 'taskList') {
-    renderTask();
-  }
-};
+renderTasks(getItem('tasksList'));
 
-window.addEventListener('storage', onStorageChange);

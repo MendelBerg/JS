@@ -1,10 +1,28 @@
-import { onCreateTask } from './createTask.js';
-import { onToggleTask } from './updateTask.js';
+/* eslint-disable import/no-cycle */
+import { createCheckbox } from './checkbox.js';
 
-export const initTodoListHandlers = () => {
-  const createBtnElem = document.querySelector('.create-task-btn');
-  createBtnElem.addEventListener('click', onCreateTask);
+const listElem = document.querySelector('.list');
 
-  const todoListElem = document.querySelector('.list');
-  todoListElem.addEventListener('click', onToggleTask);
-};
+const createListItems = taskList =>
+  taskList.map(({ text, done }) => {
+    const listItemElem = document.createElement('li');
+    listItemElem.classList.add('list__item');
+
+    if (done) {
+      listItemElem.classList.add('list__item_done');
+    }
+
+    listItemElem.append(createCheckbox(done), text);
+
+    return listItemElem;
+  });
+
+export function renderTasks(tasksList) {
+  console.log(tasksList);
+  listElem.append(
+    ...createListItems([
+      ...tasksList.filter(task => task.done === false),
+      ...tasksList.filter(task => task.done === true).sort((a, b) => b.date - a.date),
+    ]),
+  );
+}
