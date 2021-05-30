@@ -5,12 +5,7 @@ export function getItem() {
   return fetch(baseUrl).then(response => response.json());
 }
 
-// export const setItem = (key, value) => {
-//   localStorage.setItem(key, JSON.stringify(value));
-// };
-
 export function setItem(userData) {
-  console.log(userData);
   return fetch(baseUrl, {
     method: 'POST',
     headers: {
@@ -20,7 +15,3 @@ export function setItem(userData) {
   }).then(response => response.json());
 }
 
-
-// const get = key => JSON.parse(localStorage.getItem(key));
-
-// export const getItem = key => get(key) || [];

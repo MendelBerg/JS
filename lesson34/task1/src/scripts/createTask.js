@@ -13,10 +13,11 @@ export function createTask() {
     date: Date.now(),
     text: inputElem.value,
     done: false,
+  }).then(_ => {
+    inputElem.value = '';
+    refreashList(getItem());
   });
 
-  inputElem.value = '';
-  refreashList(getItem());
   return undefined;
 }
 
