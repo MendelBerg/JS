@@ -9,7 +9,7 @@ export function createTask() {
   }
 
   setItem({
-    id: Math.random().toString(),
+    // id: Math.random().toString(),
     date: Date.now(),
     text: inputElem.value,
     done: false,

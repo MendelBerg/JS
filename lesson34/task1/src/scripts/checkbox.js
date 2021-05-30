@@ -27,6 +27,8 @@ function toggleTask(checkbox) {
       date: Date.now(),
       text: res.text,
       done: !res.done,
+    }).then(_ => {
+      refreashList(getItem());
     });
   });
 }

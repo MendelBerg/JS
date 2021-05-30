@@ -27,8 +27,8 @@ export function renderTasks(tasksList) {
   tasksList.then(res => {
     listElem.append(
       ...createListItems([
-        ...res.filter(task => task.done === true),
-        ...res.filter(task => task.done === false).sort((a, b) => b.date - a.date),
+        ...res.filter(task => task.done === false).reverse(),
+        ...res.filter(task => task.done === true).sort((a, b) => b.date - a.date),
       ]),
     );
   });
