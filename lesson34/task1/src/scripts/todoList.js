@@ -6,13 +6,20 @@ const listElem = document.querySelector('.list');
 const createListItems = taskList =>
   taskList.map(({ text, done, id }) => {
     const listItemElem = document.createElement('li');
-    listItemElem.classList.add('list__item');
+    listItemElem.classList.add('list-item', 'list__item');
 
     if (done) {
-      listItemElem.classList.add('list__item_done');
+      listItemElem.classList.add('list-item_done');
     }
 
-    listItemElem.append(createCheckbox(done, id), text);
+    const textElem = document.createElement('span');
+    textElem.classList.add('list-item__text');
+    textElem.textContent = text;
+
+
+    const deleteBtnElem = document.createElement('button');
+    deleteBtnElem.classList.add('list-item__delete-btn');
+    listItemElem.append(createCheckbox(done, id), textElem, deleteBtnElem);
 
     return listItemElem;
   });

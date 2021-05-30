@@ -5,7 +5,7 @@ import { refreashList } from './tools.js';
 
 function toggleTask(checkbox) {
   const tasks = getItem('tasksList');
-  checkbox.parentElement.classList.toggle('list__item_done');
+  checkbox.parentElement.classList.toggle('list-item_done');
 
   for (const el of tasks) {
     if (el.text === checkbox.parentElement.textContent) {
@@ -24,7 +24,7 @@ export const createCheckbox = (done, id) => {
   checkbox.setAttribute('type', 'checkbox');
   checkbox.setAttribute('data-id', id);
   checkbox.checked = done;
-  checkbox.classList.add('list__item-checkbox');
+  checkbox.classList.add('list-item-checkbox');
   checkbox.addEventListener('click', event => toggleTask(event.target));
 
   return checkbox;
