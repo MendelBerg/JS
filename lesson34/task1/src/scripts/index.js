@@ -4,5 +4,5 @@ import { createTask } from './createTask.js';
 import { renderTasks } from './todoList.js';
 
 
-renderTasks(getItem('tasksList'));
+renderTasks(getItem());
 

@@ -15,14 +15,13 @@ function toggleTask(checkbox) {
     }
   }
 
-  setItem('tasksList', tasks);
-  refreashList(getItem('tasksList'));
+  setItem(tasks);
+  refreashList(getItem());
 }
 
-export const createCheckbox = (done, id) => {
+export const createCheckbox = (done) => {
   const checkbox = document.createElement('input');
   checkbox.setAttribute('type', 'checkbox');
-  checkbox.setAttribute('data-id', id);
   checkbox.checked = done;
   checkbox.classList.add('list-item-checkbox');
   checkbox.addEventListener('click', event => toggleTask(event.target));
