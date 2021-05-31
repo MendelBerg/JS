@@ -4,6 +4,7 @@ const baseUrl = 'https://60b39c004ecdc1001747f926.mockapi.io/api/t1/user';
 const errorMessageElem = document.querySelector('.error-text');
 const allInputs = [...document.querySelectorAll('.form-input')];
 const submitBtn = document.querySelector('.submit-button');
+const form = document.querySelector('.login-form');;
 
 isValid(allInputs);
 
@@ -39,10 +40,14 @@ submitBtn.addEventListener('click', event => {
 });
 
 function isValid(arr) {
-  if (arr[0].reportValidity() && arr[1].reportValidity() && arr[2].reportValidity()) {
+  // if (arr[0].reportValidity() && arr[1].reportValidity() && arr[2].reportValidity()) {
+  //   submitBtn.removeAttribute('disabled');
+  //   submitBtn.setAttribute('enabled', true);
+  //   errorMessageElem.textContent = '';
+  if (form.reportValidity()) {
     submitBtn.removeAttribute('disabled');
-    submitBtn.setAttribute('enabled', true);
-    errorMessageElem.textContent = '';
+      submitBtn.setAttribute('enabled', true);
+      errorMessageElem.textContent = '';
   } else if (!submitBtn.hasAttribute('disabled')) {
     submitBtn.setAttribute('disabled', true);
     errorMessageElem.textContent = 'Failed to create user';
