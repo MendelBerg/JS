@@ -4,9 +4,9 @@ const baseUrl = 'https://60b39c004ecdc1001747f926.mockapi.io/api/t1/user';
 const errorMessageElem = document.querySelector('.error-text');
 const allInputs = [...document.querySelectorAll('.form-input')];
 const submitBtn = document.querySelector('.submit-button');
-const form = document.querySelector('.login-form');;
+const form = document.querySelector('.login-form');
 
-isValid(allInputs);
+isValid();
 
 function createUser(userData) {
   return fetch(baseUrl, {
@@ -33,21 +33,17 @@ submitBtn.addEventListener('click', event => {
     password: allInputs[2].value,
   }).then(res => {
     console.log(res);
-    alert(JSON.stringify(res, null, 4));
+    alert(JSON.stringify(res));
     clearInputs(allInputs);
-    isValid(allInputs);
+    isValid();
   });
 });
 
-function isValid(arr) {
-  // if (arr[0].reportValidity() && arr[1].reportValidity() && arr[2].reportValidity()) {
-  //   submitBtn.removeAttribute('disabled');
-  //   submitBtn.setAttribute('enabled', true);
-  //   errorMessageElem.textContent = '';
+function isValid() {
   if (form.reportValidity()) {
     submitBtn.removeAttribute('disabled');
-      submitBtn.setAttribute('enabled', true);
-      errorMessageElem.textContent = '';
+    submitBtn.setAttribute('enabled', true);
+    errorMessageElem.textContent = '';
   } else if (!submitBtn.hasAttribute('disabled')) {
     submitBtn.setAttribute('disabled', true);
     errorMessageElem.textContent = 'Failed to create user';
@@ -58,7 +54,7 @@ function isValid(arr) {
 
 allInputs.forEach(e => {
   console.log(e);
-  e.onblur = () => isValid(allInputs);
+  e.onblur = () => isValid();
   e.onfocus = () => {
     errorMessageElem.textContent = '';
   };
