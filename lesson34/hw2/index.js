@@ -38,7 +38,7 @@ const onInputChange = () => {
 };
 
 allInputs.forEach(el => {
-  el.addEventListener('blur', onInputChange);
+  el.addEventListener('click', onInputChange);
 });
 
 submitBtn.addEventListener('click', event => {
