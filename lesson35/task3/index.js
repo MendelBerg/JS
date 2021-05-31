@@ -10,8 +10,11 @@ function getData(path) {
 
 const inputElem = document.querySelector('.name-form__input');
 const searchBtn = document.querySelector('.name-form__btn');
+const listElem = document.querySelector('.repo-list');
 
 searchBtn.addEventListener('click', () => {
+  listElem.innerHTML = '';
+
   const spinnerElem = document.querySelector('.spinner');
   spinnerElem.classList.remove('spinner_hidden');
 
@@ -28,8 +31,6 @@ searchBtn.addEventListener('click', () => {
     })
     .then(url => fetch(url).then(response => response.json()))
     .then(res => {
-      const listElem = document.querySelector('.repo-list');
-
       const repoItems = res.map(({ name }) => {
         const listItem = document.createElement('li');
         listItem.classList.add('repo-list__item');
@@ -39,6 +40,7 @@ searchBtn.addEventListener('click', () => {
       });
 
       spinnerElem.classList.add('spinner_hidden');
+      listElem.innerHTML = '';
       return listElem.append(...repoItems);
     })
     .catch(_ => {
