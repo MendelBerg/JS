@@ -41,6 +41,7 @@ submitBtn.addEventListener('click', event => {
 function isValid(arr) {
   if (arr[0].reportValidity() && arr[1].reportValidity() && arr[2].reportValidity()) {
     submitBtn.removeAttribute('disabled');
+    submitBtn.setAttribute('enabled', true);
     errorMessageElem.textContent = '';
   } else if (!submitBtn.hasAttribute('disabled')) {
     submitBtn.setAttribute('disabled', true);
