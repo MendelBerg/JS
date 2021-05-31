@@ -38,7 +38,7 @@ const onInputChange = () => {
 };
 
 allInputs.forEach(el => {
-  el.addEventListener('click', onInputChange);
+  el.addEventListener('input', onInputChange);
 });
 
 submitBtn.addEventListener('click', event => {
