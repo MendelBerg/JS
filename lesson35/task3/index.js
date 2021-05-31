@@ -4,8 +4,6 @@ const baseUrl = 'https://api.github.com/users';
 const avatarElem = document.querySelector('.user__avatar');
 avatarElem.src = 'https://avatars3.githubusercontent.com/u10001';
 
-// !===============5===========
-
 function getData(path) {
   return fetch(path).then(response => response.json());
 }
@@ -26,23 +24,24 @@ searchBtn.addEventListener('click', () => {
       avatarElem.src = result.avatar_url;
       userNameElem.textContent = result.name;
 
-      return result.repos_url;
+      return getData(result.repos_url);
     })
     .then(res => {
-      getData(res).then(reposArray => {
-        const listElem = document.querySelector('.repo-list');
-        reposArray.forEach(reposItem => {
-          const listItem = document.createElement('li');
-          listItem.classList.add('repo-list__item');
-          listItem.textContent = reposItem.name;
-          listElem.append(listItem);
-        });
-        spinnerElem.classList.add('spinner_hidden');
+      const listElem = document.querySelector('.repo-list');
+
+      res.forEach(reposItem => {
+        const listItem = document.createElement('li');
+        listItem.classList.add('repo-list__item');
+        listItem.textContent = reposItem.name;
+        listElem.append(listItem);
       });
+
+      spinnerElem.classList.add('spinner_hidden');
     })
     .catch(_ => {
-      spinnerElem.classList.add('spinner_hidden');
-
       alert('Failed to load data');
+    })
+    .finally(_ => {
+      spinnerElem.classList.add('spinner_hidden');
     });
 });
