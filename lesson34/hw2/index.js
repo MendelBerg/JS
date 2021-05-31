@@ -25,37 +25,24 @@ function createUser(userData) {
 }
 
 // =============VALIDATION===========
-let enabledBtn = true;
 
-function checkValidation() {
-  allInputs.forEach(el => {
-    el.addEventListener('blur', inputEl => {
-      enabledBtn = true;
-      errorMessageElem.textContent = '';
-    });
-  });
-
-  form.addEventListener('click', _ => {
-    if (
-      allInputs[0].value !== '' &&
-      allInputs[1].value !== '' &&
-      allInputs[2].value !== '' &&
-      enabledBtn
-    ) {
-      submitBtn.removeAttribute('disabled');
-    }
-  });
-
-  if (!form.reportValidity()) {
+const onInputChange = () => {
+  const isValidForm = form.reportValidity();
+  if (isValidForm) {
+    submitBtn.removeAttribute('disabled');
+    errorMessageElem.textContent = '';
+  } else {
     submitBtn.setAttribute('disabled', true);
     errorMessageElem.textContent = 'Failed to create user';
-    enabledBtn = false;
-
-    return;
   }
+};
 
-  submitBtn.removeAttribute('disabled');
+allInputs.forEach(el => {
+  el.addEventListener('blur', onInputChange);
+});
 
+submitBtn.addEventListener('click', event => {
+  event.preventDefault();
   createUser({
     email: allInputs[0].value,
     name: allInputs[1].value,
@@ -64,9 +51,4 @@ function checkValidation() {
     alert(JSON.stringify(res));
     clearInputs(allInputs);
   });
-}
-
-submitBtn.addEventListener('click', event => {
-  event.preventDefault();
-  checkValidation();
 });
