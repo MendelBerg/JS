@@ -1,3 +1,4 @@
+/* eslint-disable consistent-return */
 /* eslint-disable no-param-reassign */
 
 // =======================SOURCE===============
@@ -15,6 +16,13 @@ function clearInputs(arrInputs) {
 }
 
 function createUser(userData) {
+  const isValidForm = form.reportValidity();
+
+  if (!isValidForm) {
+    errorMessageElem.textContent = 'Failed to create user';
+    return;
+  }
+
   return fetch(baseUrl, {
     method: 'POST',
     headers: {
