@@ -26,6 +26,18 @@ function clearInputs(arrInputs) {
   });
 }
 
+function isValid() {
+  if (!form.reportValidity()) {
+    return true;
+  }
+
+  enabledBtn = false;
+  submitBtn.setAttribute('disabled', true);
+  errorMessageElem.textContent = 'Failed to create user';
+
+  return false;
+}
+
 // =================VALIDATION=================
 let enabledBtn = true;
 
@@ -37,15 +49,9 @@ allInputs.forEach(e => {
 });
 
 submitBtn.addEventListener('click', event => {
-  event.preventDefault();
+  if (!isValid()) return;
 
-  if (!form.reportValidity()) {
-    console.log('error');
-    enabledBtn = false;
-    submitBtn.setAttribute('disabled', true);
-    errorMessageElem.textContent = 'Failed to create user';
-    return;
-  }
+  event.preventDefault();
 
   createUser({
     email: allInputs[0].value,
