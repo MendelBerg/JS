@@ -16,20 +16,17 @@ function clearInputs(arrInputs) {
 }
 
 function createUser(userData) {
-  const isValidForm = form.reportValidity();
-
-  if (!isValidForm) {
-    errorMessageElem.textContent = 'Failed to create user';
-    return;
-  }
-
   return fetch(baseUrl, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json;charset=utf-8',
     },
     body: JSON.stringify(userData),
-  }).then(response => response.json());
+  })
+    .then(response => response.json())
+    .catch(_ => {
+      errorMessageElem.textContent = 'Failed to create user';
+    });
 }
 
 // =============VALIDATION===========
