@@ -36,6 +36,8 @@ submitBtn.addEventListener('click', event => {
     return;
   }
 
+  submitBtn.removeAttribute('disabled');
+
   createUser({
     email: allInputs[0].value,
     name: allInputs[1].value,
@@ -46,11 +48,11 @@ submitBtn.addEventListener('click', event => {
   });
 });
 
-allInputs.forEach(inputEl => {
-  inputEl.addEventListener('blur', _ => {
-    if (submitBtn.hasAttribute('disabled')) {
-      submitBtn.removeAttribute('disabled');
-      errorMessageElem.textContent = '';
-    }
-  });
-});
+// allInputs.forEach(inputEl => {
+//   inputEl.addEventListener('blur', _ => {
+//     if (submitBtn.hasAttribute('disabled')) {
+//
+//       errorMessageElem.textContent = '';
+//     }
+//   });
+// });
