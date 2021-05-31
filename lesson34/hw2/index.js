@@ -32,7 +32,6 @@ submitBtn.addEventListener('click', event => {
     name: allInputs[1].value,
     password: allInputs[2].value,
   }).then(res => {
-    console.log(res);
     alert(JSON.stringify(res));
     clearInputs(allInputs);
     isValid();
@@ -53,7 +52,6 @@ function isValid() {
 }
 
 allInputs.forEach(e => {
-  console.log(e);
   e.onblur = () => isValid();
   e.onfocus = () => {
     errorMessageElem.textContent = '';
