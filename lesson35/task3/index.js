@@ -24,9 +24,11 @@ searchBtn.addEventListener('click', () => {
       avatarElem.src = result.avatar_url;
       userNameElem.textContent = result.name;
 
-      return getData(result.repos_url);
+      return result.repos_url;
     })
+    .then(url => fetch(url).then(response => response.json()))
     .then(res => {
+      console.log(res);
       const listElem = document.querySelector('.repo-list');
 
       res.forEach(reposItem => {
