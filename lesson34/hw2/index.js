@@ -32,7 +32,7 @@ submitBtn.addEventListener('click', event => {
     password: allInputs[2].value,
   }).then(res => {
     console.log(res);
-    alert(res);
+    alert(JSON.stringify(res, null, 4));
     clearInputs(allInputs);
     isValid(allInputs);
   });
