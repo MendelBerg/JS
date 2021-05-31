@@ -1,31 +1,15 @@
+/* eslint-disable import/named */
 /* eslint-disable no-param-reassign */
 /* eslint-disable no-use-before-define */
 
-// import { createUser } from './server.js';
-// import { clearInputs } from './functions.js';
-
-const errorMessageElem = document.querySelector('.error-text');
-const allInputs = [...document.querySelectorAll('.form-input')];
-const submitBtn = document.querySelector('.submit-button');
-const form = document.querySelector('.login-form');
-
-const baseUrl = 'https://60b39c004ecdc1001747f926.mockapi.io/api/t1/user';
-
-function createUser(userData) {
-  return fetch(baseUrl, {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json;charset=utf-8',
-    },
-    body: JSON.stringify(userData),
-  }).then(response => response.json());
-}
-
-function clearInputs(arrInputs) {
-  arrInputs.forEach(inputElem => {
-    inputElem.value = '';
-  });
-}
+import {
+  clearInputs,
+  createUser,
+  errorMessageElem,
+  allInputs,
+  submitBtn,
+  form,
+} from './functions.js';
 
 submitBtn.addEventListener('click', event => {
   event.preventDefault();
