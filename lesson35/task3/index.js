@@ -38,8 +38,8 @@ searchBtn.addEventListener('click', () => {
         return listItem;
       });
 
-      listElem.append(...repoItems);
       spinnerElem.classList.add('spinner_hidden');
+      return listElem.append(...repoItems);
     })
     .catch(_ => {
       alert('Failed to load data');
