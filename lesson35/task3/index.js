@@ -20,7 +20,7 @@ searchBtn.addEventListener('click', () => {
       const userNameElem = document.querySelector('.user__name');
       const userLocationElem = document.querySelector('.user__location');
 
-      userLocationElem.textContent = result.location;
+      userLocationElem.textContent = `from ${result.location}`;
       avatarElem.src = result.avatar_url;
       userNameElem.textContent = result.name;
 
