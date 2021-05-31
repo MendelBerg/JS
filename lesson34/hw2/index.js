@@ -42,6 +42,8 @@ submitBtn.addEventListener('click', event => {
 
   if (!isValid()) return;
 
+  submitBtn.removeAttribute('disabled');
+
   createUser({
     email: allInputs[0].value,
     name: allInputs[1].value,
