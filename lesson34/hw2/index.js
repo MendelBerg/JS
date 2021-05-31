@@ -31,7 +31,6 @@ submitBtn.addEventListener('click', event => {
   event.preventDefault();
 
   if (!form.reportValidity()) {
-    console.log('errors!');
     submitBtn.setAttribute('disabled', true);
     errorMessageElem.textContent = 'Failed to create user';
     return;
