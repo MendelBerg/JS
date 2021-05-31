@@ -27,7 +27,7 @@ function clearInputs(arrInputs) {
 }
 
 function isValid() {
-  if (!form.reportValidity()) {
+  if (form.reportValidity()) {
     return true;
   }
 
