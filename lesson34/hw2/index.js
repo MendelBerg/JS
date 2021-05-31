@@ -25,12 +25,32 @@ function createUser(userData) {
 }
 
 // =============VALIDATION===========
+let enabledBtn = true;
 
 function checkValidation() {
+  allInputs.forEach(el => {
+    el.addEventListener('blur', inputEl => {
+      enabledBtn = true;
+      errorMessageElem.textContent = '';
+    });
+  });
+
+  form.addEventListener('click', _ => {
+    if (
+      allInputs[0].value !== '' &&
+      allInputs[1].value !== '' &&
+      allInputs[2].value !== '' &&
+      enabledBtn
+    ) {
+      submitBtn.removeAttribute('disabled');
+    }
+  });
+
   if (!form.reportValidity()) {
-    console.log('error')
     submitBtn.setAttribute('disabled', true);
     errorMessageElem.textContent = 'Failed to create user';
+    enabledBtn = false;
+
     return;
   }
 
