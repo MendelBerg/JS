@@ -3,10 +3,10 @@
 // =======================SOURCE===============
 const baseUrl = 'https://60b39c004ecdc1001747f926.mockapi.io/api/t1/user';
 
-export const errorMessageElem = document.querySelector('.error-text');
-export const allInputs = [...document.querySelectorAll('.form-input')];
-export const submitBtn = document.querySelector('.submit-button');
-export const form = document.querySelector('.login-form');
+const errorMessageElem = document.querySelector('.error-text');
+const allInputs = [...document.querySelectorAll('.form-input')];
+const submitBtn = document.querySelector('.submit-button');
+const form = document.querySelector('.login-form');
 
 function clearInputs(arrInputs) {
   arrInputs.forEach(inputElem => {
@@ -28,6 +28,7 @@ function createUser(userData) {
 
 function checkValidation() {
   if (!form.reportValidity()) {
+    console.log('error')
     submitBtn.setAttribute('disabled', true);
     errorMessageElem.textContent = 'Failed to create user';
     return;
