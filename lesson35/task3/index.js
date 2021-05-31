@@ -28,16 +28,17 @@ searchBtn.addEventListener('click', () => {
     })
     .then(url => fetch(url).then(response => response.json()))
     .then(res => {
-      console.log(res);
       const listElem = document.querySelector('.repo-list');
 
-      res.forEach(reposItem => {
+      const repoItems = res.map(({ name }) => {
         const listItem = document.createElement('li');
         listItem.classList.add('repo-list__item');
-        listItem.textContent = reposItem.name;
-        listElem.append(listItem);
+        listItem.textContent = name;
+
+        return listItem;
       });
 
+      listElem.append(...repoItems);
       spinnerElem.classList.add('spinner_hidden');
     })
     .catch(_ => {
