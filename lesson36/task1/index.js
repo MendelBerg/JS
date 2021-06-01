@@ -4,13 +4,8 @@ const fetchUser = async userId => {
 
     if (!response.ok) return null;
 
-    const userData = await response.json();
-    return userData;
+    return await response.json();
   } catch (error) {
     throw new Error('Something went wrong');
   }
 };
-
-console.log(fetchUser('facebook'));
-
-
