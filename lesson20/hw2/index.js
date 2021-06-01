@@ -1,5 +1,4 @@
 /* eslint-disable no-restricted-syntax */
-/* eslint-disable getter-return */
 /* eslint-disable max-classes-per-file */
 
 class User {

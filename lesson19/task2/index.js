@@ -1,17 +1,4 @@
-/* eslint-disable no-restricted-syntax */
-
 const getOwnProps = obj => Object.keys(obj).filter(prop => typeof obj[prop] !== 'function');
-
-//! OR
-// export const getOwnProps = function (obj) {
-//   const properties = [];
-//   for (const key in obj) {
-//     if (Object.prototype.hasOwnProperty.call(obj, key) && typeof obj[key] !== 'function') {
-//       properties.push(key);
-//     }
-//   }
-//   return properties;
-// };
 
 const vehicle = {
   move() {
