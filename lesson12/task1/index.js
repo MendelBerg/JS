@@ -1,30 +1,20 @@
-/* eslint-disable no-nested-ternary */
 const calc = expression => {
-  const [a, operator, b] = expression.split(' ').map(char => (isFinite(char) ? +char : char));
+  const [a, operator, b] = expression.split(' ').map(char => +char || char);
+  let result;
 
-  return `${expression} = ${
-    operator === '+' ? a + b : operator === '-' ? a - b : operator === '*' ? a * b : a / b
-  }`;
+  switch (operator) {
+    case '+':
+      result = a + b;
+      break;
+    case '-':
+      result = a - b;
+      break;
+    case '*':
+      result = a * b;
+      break;
+    default:
+      result = a / b;
+  }
+
+  return `${expression} = ${result}`;
 };
-
-//! OR
-// const calc = expression => {
-//   const [a, operator, b] = expression.split(' ').map(char => (isFinite(char) ? +char : char));
-//   let result;
-
-//   switch (operator) {
-//     case '+':
-//       result = a + b;
-//       break;
-//     case '-':
-//       result = a - b;
-//       break;
-//     case '*':
-//       result = a * b;
-//       break;
-//     default:
-//       result = a / b;
-//   }
-
-//   return `${expression} = ${result}`;
-// };

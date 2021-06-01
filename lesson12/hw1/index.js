@@ -1,1 +1,1 @@
-const reverseString = str => (typeof str === 'string' ? [...str].reverse().join('') : null);
+const reverseString = str => (!(typeof str === 'string') ? null : [...str].reverse().join(''));

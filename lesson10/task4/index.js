@@ -1,2 +1,4 @@
 const getMaxAbsoluteNumber = numbers =>
-  Array.isArray(numbers) && numbers.length ? Math.max(...numbers.map(num => Math.abs(num))) : null;
+  !(Array.isArray(numbers) && numbers.length)
+    ? null
+    : Math.max(...numbers.map(num => Math.abs(num)));
