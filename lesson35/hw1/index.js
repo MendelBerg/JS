@@ -2,7 +2,7 @@ const parseUser = stringJSON => {
   try {
     const data = JSON.parse(stringJSON);
     return data;
-  } catch {
+  } catch (e) {
     return null;
   }
 };
