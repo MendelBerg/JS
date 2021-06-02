@@ -37,6 +37,8 @@ function renderTasks(tasksList) {
   listElem.append(...tasksElems);
 }
 
+
+
 function toggleTask(checkbox) {
   checkbox.parentElement.classList.toggle('list__item_done');
 
@@ -49,6 +51,8 @@ function toggleTask(checkbox) {
 
   refreashList();
 }
+
+
 
 function createTask() {
   const inputElem = document.querySelector('.task-input');
