@@ -2,7 +2,7 @@
 
 const rectElems = [...document.querySelectorAll('.rect')].slice(0, 3);
 const eventsListElem = document.querySelector('.events-list');
-const btnArr = document.querySelectorAll('.btn');
+const btnElems = document.querySelectorAll('.btn');
 
 function logTarget(text, color) {
   eventsListElem.innerHTML += `<span style="color: ${color}; margin-left: 8px;">${text}</span>`;
@@ -33,8 +33,8 @@ clearList();
 
 toggleEventsRect();
 
-btnArr[0].addEventListener('click', () => clearList());
+btnElems[0].addEventListener('click', () => clearList());
 
-btnArr[1].addEventListener('click', () => toggleEventsRect(false));
+btnElems[1].addEventListener('click', () => toggleEventsRect(false));
 
-btnArr[2].addEventListener('click', () => toggleEventsRect());
+btnElems[2].addEventListener('click', () => toggleEventsRect());
