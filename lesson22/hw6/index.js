@@ -1,6 +1,6 @@
-const btnElemArr = document.querySelectorAll('.btn');
+const btnElemArr = [...document.querySelectorAll('.btn')];
 
-const handleClick = event => {
+const handleClick = (event) => {
   console.log(event.target.textContent);
 };
 
