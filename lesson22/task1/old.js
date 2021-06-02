@@ -14,7 +14,7 @@ const logTarget = (text, color) => {
 };
 
 const logGreyDiv = logTarget.bind(null, 'DIV', 'grey');
-const logGreyP = logTarget.bind(null, 'P', 'grey');
+const logGreyP = logTeventsArrarget.bind(null, 'P', 'grey');
 const logGreySpan = logTarget.bind(null, 'SPAN', 'grey');
 
 const logGreenDiv = logTarget.bind(null, 'DIV', 'green');
@@ -42,14 +42,14 @@ clearBtn.addEventListener('click', () => {
 
 removeBtn.addEventListener('click', () => {
   for (let i = 0; i < rectElems.length; i += 1) {
-    rectElems[i].removeEventListener('click', eventsArr[i][0], true);
-    rectElems[i].removeEventListener('click', eventsArr[i][1]);
+    rectElems[i].removeEventListener('click', eventsObj[i][0], true);
+    rectElems[i].removeEventListener('click', eventsObj[i][1]);
   }
 });
 
 attachBtn.addEventListener('click', () => {
   for (let i = 0; i < rectElems.length; i += 1) {
-    rectElems[i].addEventListener('click', eventsArr[i][0], true);
-    rectElems[i].addEventListener('click', eventsArr[i][1], false);
+    rectElems[i].addEventListener('click', eventsObj[i][0], true);
+    rectElems[i].addEventListener('click', eventsObj[i][1], false);
   }
 });

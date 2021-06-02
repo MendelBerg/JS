@@ -1,53 +1,40 @@
-/* eslint-disable no-param-reassign */
-//! скоротити ці 8 рядків ініціалізацій
+/* eslint-disable array-callback-return */
 
-const divElem = document.querySelector('.rect_div');
-const pElem = document.querySelector('.rect_p');
-const spanElem = document.querySelector('.rect_span');
-const eventsListElem = document.querySelector('.events-list');
-const clearBtn = document.querySelector('.clear-btn');
-const removeBtn = document.querySelector('.remove-handlers-btn');
-const attachBtn = document.querySelector('.attach-handlers-btn');
 const rectElems = [...document.querySelectorAll('.rect')].slice(0, 3);
+const eventsListElem = document.querySelector('.events-list');
+const btnArr = document.querySelectorAll('.btn');
 
-const cleareElem = (elem=eventsListElem) => {
-  elem.innerHTML = ''
-};
+const textArr = ['DIV', 'P', 'SPAN'];
 
-cleareElem();
-
-function logTarget (text, color) {
+function logTarget(text, color) {
   eventsListElem.innerHTML += `<span style="color: ${color}; margin-left: 8px;">${text}</span>`;
 }
 
-//! забрати подальші 6 ініціалізацій змінних, текст можена через масив[дів, п, спан] текст хай буде, там і так два рядки у toggleEvents
-
-const logGreyDiv = logTarget.bind(null, 'DIV', 'grey');
-const logGreyP = logTarget.bind(null, 'P', 'grey');
-const logGreySpan = logTarget.bind(null, 'SPAN', 'grey');
-
-const logGreenDiv = logTarget.bind(null, 'DIV', 'green');
-const logGreenP = logTarget.bind(null, 'P', 'green');
-const logGreenSpan = logTarget.bind(null, 'SPAN', 'green');
-
-const eventsArr = [[logGreyDiv, logGreenDiv], [logGreyP, logGreenP], [logGreySpan, logGreenSpan]];
-
+const eventsObj = {
+  grey: textArr.map(text => logTarget.bind(null, text, 'grey')),
+  green: textArr.map(text => logTarget.bind(null, text, 'green')),
+};
 
 function toggleEventsRect(add = true) {
-  const toggleListener = (context, ...args) => add 
-  ? context.addEventListener(...args) 
-  : context.removeEventListener(...args);
+  const toggleListener = (context, ...args) =>
+    add ? context.addEventListener(...args) : context.removeEventListener(...args);
 
-  for (let i = 0; i < rectElems.length; i+=1) {
-    toggleListener(rectElems[i], 'click', eventsArr[i][0], true);
-    toggleListener(rectElems[i], 'click', eventsArr[i][1]);
-  }
+  rectElems.map((elem, index) => {
+    toggleListener(elem, 'click', eventsObj.grey[index], true);
+    toggleListener(elem, 'click', eventsObj.green[index]);
+  });
 }
+
+const clearList = () => {
+  eventsListElem.innerHTML = '';
+};
+
+clearList();
 
 toggleEventsRect();
 
-clearBtn.addEventListener('click', () => cleareElem());
+btnArr[0].addEventListener('click', () => clearList());
 
-removeBtn.addEventListener('click', () => toggleEventsRect(false));
+btnArr[1].addEventListener('click', () => toggleEventsRect(false));
 
-attachBtn.addEventListener('click', () => toggleEventsRect());
+btnArr[2].addEventListener('click', () => toggleEventsRect());
