@@ -1,6 +1,6 @@
-const btnElemArray = [...document.querySelectorAll('.pagination__page')];
+const btnElemArray = document.querySelectorAll('.pagination__page');
 
-const handleClick = (event) => {
+const handleClick = event => {
   console.log(event.target.dataset.pageNumber);
 };
 
