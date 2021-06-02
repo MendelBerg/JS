@@ -1,7 +1,29 @@
+/* eslint-disable no-use-before-define */
 /* eslint-disable consistent-return */
-import { tasks } from './source.js';
-import { createLiElem } from './liElem.js';
-import { createCheckbox } from './checkbox.js';
+import { tasks } from './tasks.js';
+
+export const createCheckbox = done => {
+  const checkboxElem = document.createElement('input');
+  checkboxElem.setAttribute('type', 'checkbox');
+  checkboxElem.checked = done;
+  checkboxElem.classList.add('list__item-checkbox');
+  checkboxElem.addEventListener('click', event => toggleTask(event.target));
+
+  return checkboxElem;
+};
+
+export const createLiElem = (done, checkboxElem, text, id) => {
+  const liElem = document.createElement('li');
+  liElem.classList.add('list__item');
+  liElem.setAttribute('data-id', id);
+  liElem.append(checkboxElem, text);
+
+  if (done) {
+    liElem.classList.add('list__item_done');
+  }
+
+  return liElem;
+};
 
 export const renderTasks = tasksList => {
   const listElem = document.querySelector('.list');
@@ -34,3 +56,4 @@ export const createTask = () => {
 
   renderTasks(tasks);
 };
+
