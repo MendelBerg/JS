@@ -4,11 +4,11 @@ const rectElems = [...document.querySelectorAll('.rect')].slice(0, 3);
 const eventsListElem = document.querySelector('.events-list');
 const btnArr = document.querySelectorAll('.btn');
 
-const textArr = ['DIV', 'P', 'SPAN'];
-
 function logTarget(text, color) {
   eventsListElem.innerHTML += `<span style="color: ${color}; margin-left: 8px;">${text}</span>`;
 }
+
+const textArr = ['DIV', 'P', 'SPAN'];
 
 const eventsObj = {
   grey: textArr.map(text => logTarget.bind(null, text, 'grey')),
