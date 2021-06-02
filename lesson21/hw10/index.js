@@ -1,16 +1,22 @@
 function manageClasses() {
-  const liElem1 = document.querySelector('.one');
-  const liElem2 = document.querySelector('.two');
-  const liElem3 = document.querySelector('.three');
-  const liElem4 = document.querySelector('.four');
+  const liElems = document.querySelectorAll('li');
 
-  liElem1.classList.add('selected');
-  liElem2.classList.remove('selected');
-  liElem3.classList.toggle('three_done');
+  liElems[0].classList.add('selected');
+  liElems[1].classList.remove('selected');
+  liElems[2].classList.toggle('three_done');
 
-  if(liElem4.classList.contains('some-class')) {
-    liElem4.classList.add('another-class');
+  if (liElems[3].classList.contains('some-class')) {
+    liElems[3].classList.add('another-class');
   }
+}
+
+// OR
+function manageClasses2() {
+  const liElems = ['.one', '.two', '.three', '.four'].map(className =>
+    document.querySelector(className),
+  );
+
+//     ...the same code...
 }
 
 manageClasses();

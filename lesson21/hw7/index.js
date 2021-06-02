@@ -3,5 +3,3 @@ function clearList() {
 
   bodyElem.innerHTML = '';
 }
-
-// clearList();

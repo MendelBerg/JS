@@ -2,13 +2,11 @@ function finishList() {
   const listElem = document.querySelector('.list');
   const liElem = document.querySelector('.special');
 
-  const liArray = [];
-  const numbers = ['1', '4', '6', '8'];
-
-  for (let i = 0; i < 4; i+=1) {
-    liArray.push(document.createElement('li'));
-    liArray[i].textContent = numbers[i];
-  }
+  const liArray = [1, 4, 6, 8].map(num => {
+    const liItem = document.createElement('li');
+    liItem.textContent = num;
+    return liItem;
+  });
 
   listElem.prepend(liArray[0]);
   liElem.before(liArray[1]);

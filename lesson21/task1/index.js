@@ -6,31 +6,35 @@ const tasks = [
   { text: 'Buy meat', done: true },
 ];
 
+const createCheckbox = done => {
+  const checkboxElem = document.createElement('input');
+  checkboxElem.setAttribute('type', 'checkbox');
+  checkboxElem.checked = done;
+  checkboxElem.classList.add('list__item-checkbox');
 
-const renderListItems = listItems => {
+  return checkboxElem;
+};
+
+const createLiElem = (done, checkboxElem, text) => {
+  const liElem = document.createElement('li');
+  liElem.classList.add('list__item');
+  liElem.append(checkboxElem, text);
+
+  if (done) {
+    liElem.classList.add('list__item_done');
+  }
+
+  return liElem;
+};
+
+const renderListItems = tasksList => {
   const listElem = document.querySelector('.list');
 
-  const listItemsElems = listItems
-  .sort((a,b) => a.done - b.done)
-  .map(({ text, done }) => {
-    const listItemElem = document.createElement('li');
-    listItemElem.classList.add('list__item');
+  const liElems = tasksList
+    .sort((a, b) => a.done - b.done)
+    .map(({ text, done }) => createLiElem(done, createCheckbox(done), text));
 
-    if(done) {
-      listItemElem.classList.add('list__item_done');
-    }
-
-    const checkboxElem = document.createElement('input');
-    checkboxElem.setAttribute('type', 'checkbox');
-    checkboxElem.checked = done;
-    checkboxElem.classList.add('list__item-checkbox');
-    
-    listItemElem.append(checkboxElem, text);
-
-    return listItemElem;
-  });
-
-  listElem.append(...listItemsElems);
-}
+  listElem.append(...liElems);
+};
 
 renderListItems(tasks);
