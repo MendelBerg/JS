@@ -29,6 +29,7 @@ const createLiElem = (done, checkboxElem, text) => {
 
 const renderListItems = tasksList => {
   const listElem = document.querySelector('.list');
+  listElem.textContent = '';
 
   const liElems = tasksList
     .sort((a, b) => a.done - b.done)
