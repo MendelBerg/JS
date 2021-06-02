@@ -1,3 +1,4 @@
+/* eslint-disable consistent-return */
 /* eslint-disable prefer-destructuring */
 const counterElem = document.querySelector('.counter');
 const counterValueElem = document.querySelector('.counter__value');
