@@ -1,14 +1,15 @@
 const countOccurrences = function (str = '', text) {
   if (!text) return null;
-  let myStr = str;
-  let index = myStr.indexOf(text);
+
   let count = 0;
+  let index = str.indexOf(text);
 
   while (index !== -1) {
     count += 1;
-    myStr = myStr.slice(index + text.length + 1);
-    index = myStr.indexOf(text);
+    index = str.indexOf(text, index + 1);
   }
 
   return count;
 };
+
+console.log(countOccurrences('ssMannaMannaManManna', 'Manna'));
