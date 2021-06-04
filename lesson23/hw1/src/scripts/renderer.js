@@ -36,7 +36,7 @@ export const renderTasks = tasksList => {
   listElem.append(...liElems);
 };
 
-export const toggleTask = (checkbox) => {
+export const toggleTask = checkbox => {
   const liElem = checkbox.parentElement;
   liElem.classList.toggle('list__item_done');
 
@@ -44,7 +44,7 @@ export const toggleTask = (checkbox) => {
   tasks[index].done = !tasks[index].done;
 
   renderTasks(tasks);
-}
+};
 
 export const createTask = () => {
   const inputElem = document.querySelector('.task-input');
@@ -56,4 +56,3 @@ export const createTask = () => {
 
   renderTasks(tasks);
 };
-

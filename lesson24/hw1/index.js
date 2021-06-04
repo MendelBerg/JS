@@ -1,39 +1,19 @@
+const SECOND = 1000;
+const MINUTE = SECOND * 60;
+const HOUR = MINUTE * 60;
+const DAY = HOUR * 24;
+
 const getDiff = (startDate, endDate) => {
-  let diff = Math.abs(startDate - endDate);
-  let days = 0;
-  let hours = 0;
-  let minutes = 0;
-  let seconds = 0;
+  const difference = new Date(Math.abs(endDate - startDate));
 
-  if (diff < 60000) {
-    seconds = Math.floor(diff / 1000);
-  } else if (diff < 60000 * 60) {
-    minutes = Math.floor(diff / 60000);
-    diff -= minutes * 60000;
-    seconds = Math.floor(diff / 1000);
-    
-  } else if (diff < 60000 * 60 * 24) {
-    hours = Math.floor(diff / (60 * 60 * 1000));
-    diff -= hours * 60 * 60 * 1000;
+  const daysLeft = Math.floor(difference / DAY);
+  const hoursLeft = Math.floor((difference % DAY) / HOUR);
+  const minutesLeft = Math.floor((difference % HOUR) / MINUTE);
+  const secondsLeft = Math.floor((difference % MINUTE) / SECOND);
 
-    minutes = Math.floor(diff / 60000);
-    diff -= minutes * 60000;
-
-    seconds = Math.floor(diff / 1000);
-  } else {
-    days = Math.floor(diff / (60 * 60 * 1000 * 24));
-    diff -= days * 60 * 60 * 1000 * 24;
-
-    hours = Math.floor(diff / (60 * 60 * 1000));
-    diff -= hours * 60 * 60 * 1000;
-
-    minutes = Math.floor(diff / 60000);
-    diff -= minutes * 60000;
-
-    seconds = Math.floor(diff / 1000);
-  }
-
-  return `${days}d ${hours}h ${minutes}m ${seconds}s`;
+  return `${daysLeft}d ${hoursLeft}h ${minutesLeft}m ${secondsLeft}s`;
 };
 
-console.log(getDiff(new Date(2011, 0, 11, 6, 8, 6), new Date(2011, 0, 1, 2, 3, 4)));
+console.log(getDiff(new Date(2011, 0, 0, 0, 0, 0), new Date(2011, 0, 0, 0, 1, 0)));
+
+
