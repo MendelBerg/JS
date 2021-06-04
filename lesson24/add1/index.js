@@ -1,11 +1,11 @@
+/* eslint-disable no-param-reassign */
 const studentsBirthDays = students => {
-  const birthObj = {};
-
-  students.forEach(elObj => {
-    const month = new Date(elObj.birthDate).toLocaleString('en', { month: 'short' });
-    birthObj[month] = birthObj[month] || [];
-    birthObj[month].push(elObj);
-  });
+  const birthObj = students.reduce((newObj, student) => {
+    const month = new Date(student.birthDate).toLocaleString('en', { month: 'short' });
+    newObj[month] = newObj[month] || [];
+    newObj[month].push(student);
+    return newObj;
+  }, {});
 
   return Object.entries(birthObj).reduce(
     (acc, month) => ({
