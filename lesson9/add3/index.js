@@ -1,17 +1,6 @@
-function compareObjects(obj1, obj2) {
-  const arr1 = Object.entries(obj1);
-  const arr2 = Object.entries(obj2);
-
-  if (arr1.length !== arr2.length) return false;
-
-  for (let i = 0; i < arr1.length; i += 1) {
-    if (!(arr1[i][0] === arr2[i][0] && arr1[i][1] === arr2[i][1])) {
-      return false;
-    }
-  }
-
-  return true;
-}
+const compareObjects = (obj1, obj2) =>
+  Object.keys(obj1).length === Object.keys(obj2).length &&
+  Object.keys(obj1).every(elem => obj1[elem] === obj2[elem]);
 
 // examples
 const obj1 = {
